@@ -1,0 +1,155 @@
+@charset "UTF-8";
+html{
+	width:100%;
+}
+body{
+	width:40%;
+	margin:0 auto;
+}
+ul{	
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+img{
+}
+a{
+	text-decoration:none;
+	color:black;
+}
+h1,h2,h3,h4,h5{
+	margin:0;
+}
+.info{
+	position:absolute;
+	top:100px;
+	left:30px;
+	z-index:9999;
+	color:#ffffff;
+}
+.cnt_row{
+	margin:15px auto;
+	text-align:center;
+}
+.promotion_content>img{
+	width:100%;
+	height:100%;
+}
+.product_li{
+}
+.main_content{
+	max-width:100%;
+	margin:-1px;
+	padding:0;
+	border:1px solid #EEEEEA;
+	background-color:#ffffff;
+}
+.main_img{
+	border-bottom:2px solid #EEEEEA;
+}
+.main_img>img{
+	width:100%;
+}
+.on{
+	color:#00FF00;
+	border-bottom:2px solid #00FF00;
+}
+.description{
+	padding: 10px 10px;
+	border-bottom:1px solid #EEEEEA;
+}
+.content{
+	margin:15px 10px;
+	display: block;
+	overflow: hidden; 
+	text-overflow: ellipsis; 
+	white-space: normal; 
+	line-height: 1; 
+	word-wrap: break-word; 
+	display: -webkit-box; 
+	-webkit-line-clamp: 2; 
+	-webkit-box-orient: vertical;
+}
+#gnb{
+	display:flex;
+	justify-content:space-between;
+	width:100%;
+	height:100%;
+	background-color: #00CC00;
+}
+#login{
+	text-decoration:none;
+	margin-right:15px;
+	height:32px;
+	line-height:32px;
+}
+#login>a{
+	text-decoration:none;
+	color:#000000;
+}
+#promotion{
+	height:300px;
+	overflow:hidden;
+}
+#promotion>ul{
+	height:100%;
+	transition:1s;
+	display:flex;
+	/*animation:slide 8s infinite;*/
+}
+#tab_menu{
+	width:100%;
+	border-bottom:1px solid #EEEEEA;
+}
+#tab_menu>ul{
+	display:flex;
+	justify-content: space-around;
+	font-size:1.2em;
+}
+#tab_menu>ul>li:hover{
+	cursor:pointer;
+	border-bottom:2px solid #00FF00;
+}
+#cnt{
+	font-weight:bold;
+	color:red;
+}
+#product_container{
+	display:flex;
+	width:100%;
+	background-color:#EAEAEA;
+}
+#container:after{
+	width:100%;
+	content:"";
+	display:block;
+	clear:both;
+}
+#left_container{
+	width:50%;
+}
+#right_container{
+	width:50%;
+}
+#container img {
+	width:100%;
+}
+}
+#more_btn{
+	align:center;
+	width:100%;
+	display:block;
+	clear:both;
+}
+#more_btn>button{
+	width:100%;
+	background-color:#FFFFFF;
+	border:1px solid #708080;
+	line-height:50px;
+}
+#go_top{
+	display:block;
+	margin:20px 0;
+	width:100%;
+	text-align:center;
+}
