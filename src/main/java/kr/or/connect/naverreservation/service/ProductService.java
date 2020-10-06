@@ -6,6 +6,7 @@ import kr.or.connect.naverreservation.dto.Comment;
 import kr.or.connect.naverreservation.dto.DisplayInfo;
 import kr.or.connect.naverreservation.dto.DisplayInfoResponse;
 import kr.or.connect.naverreservation.dto.Product;
+import kr.or.connect.naverreservation.dto.ProductPrice;
 import kr.or.connect.naverreservation.dto.ProductResponse;
 import kr.or.connect.naverreservation.dto.PromotionResponse;
 
@@ -26,6 +27,5 @@ public interface ProductService {
 	public String getExtraImg(Integer displayInfoId,Integer start);
 	
 	public Product getProducts(Integer categoryId);
-
 
 }

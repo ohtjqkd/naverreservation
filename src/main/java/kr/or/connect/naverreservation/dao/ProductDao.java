@@ -56,7 +56,10 @@ public class ProductDao {
 		if(commentsSize != 0) {
 			averageScore = totalScore/commentsSize;
 		}
-
+		//test
+		for(ProductImage pi:productImages) {
+			System.out.println(pi.getSaveFileName());
+		}
 		
 		displayInfoResponse.setAverageScore(Double.parseDouble(String.format("%.1f",averageScore)));
 		displayInfoResponse.setComments(comments);
@@ -68,6 +71,8 @@ public class ProductDao {
 	}
 	public DisplayInfo selectDisplayInfo(Integer displayInfoId) {
 		RowMapper<DisplayInfo> displayInfoMapper = new BeanPropertyRowMapper<DisplayInfo>(DisplayInfo.class);
+		DisplayInfo displayInfo = jdbc.queryForObject(SELECT_DISPLAY_INFO, Collections.singletonMap("displayInfoId",displayInfoId), displayInfoMapper);
+		System.out.println("displayInfoId="+displayInfo.getId());
 		return jdbc.queryForObject(SELECT_DISPLAY_INFO, Collections.singletonMap("displayInfoId",displayInfoId), displayInfoMapper);
 	}
 	
@@ -83,6 +88,7 @@ public class ProductDao {
 		for(Comment comment: comments) {
 			Integer commentId = comment.getCommentId();
 			comment.setCommentImages(selectCommentImages(commentId));
+			System.out.println(comment.getScore());
 		}
 		return comments; 
 	}

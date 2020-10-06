@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id = "tmpl_qty">
+	<div class="qty">
+	    <div class="qty_info_icon"> <strong class="product_amount"> <span>성인</span> </strong> <strong class="product_price"> <span class="price">10,200</span> <span class="price_type">원</span> </strong> <em class="product_dsc">10,200원 (15% 할인가)</em> </div>
+	    <div class="count_control">
+	        <!-- [D] 수량이 최소 값이 일때 ico_minus3, count_control_input에 disabled 각각 추가, 수량이 최대 값일 때는 ico_plus3에 disabled 추가 -->
+	        <div class="clearfix">
+	            <button class="btn_plus_minus spr_book2 ico_minus3" title="빼기">&ndash;</button><input type="tel" class="count_control_input" value="0" readonly title="수량"><button class="btn_plus_minus spr_book2 ico_plus3" title="더하기">+</button>                                    
+	        </div>
+	        <!-- [D] 금액이 0 이상이면 individual_price에 on_color 추가 -->
+	        <div class="individual_price"><span class="total_price">0</span><span class="price_type">원</span></div>
+	    </div>
+	</div>
+</div>
+<div id="promotionItem">
+    <li class="item">
+		<img src="{{productImageUrl}}"/>
+        <a href="#"> <span class="img_btm_border"></span> <span class="img_right_border"></span> <span class="img_bg_gra"></span>
+            <div class="event_txt">
+                <h5 class="event_txt_tit"></h5>
+                <p class="event_txt_adr"></p>
+                <p class="event_txt_dsc"></p>
+            </div>
+        </a>
+    </li>
+</div>
+
+<div id="itemList">
+    <li class="item">
+        <a href="detail?displayInfoId={{displayInfoId}}" class="item_book">
+            <div class="item_preview">
+                <img alt="{{productDescription}}" class="img_thumb" src="{{productImageUrl}}">
+                <span class="img_border"></span>
+            </div>
+            <div class="event_txt">
+                <h5 class="event_txt_tit"> <span>{{productDescription}}</span> <small class="sm">{{placeName}}</small> </h5>
+                <p class="event_txt_dsc">{{productContent}}</p>
+            </div>
+        </a>
+    </li>
+</div>
+
+
+
+
+</body>
+</html>
+
+
+<!-- <body>
+<div id = "gnb">
+	<img src="img/favicon.ico">
+	<div id = "login">
+		<c:choose>
+			<c:when test="${sessionScope.memberEmail!=null}">
+				<a href="reservation/${sessionScope.memberEmail}">${sessionScope.memberEmail}</a>
+			</c:when>
+			<c:otherwise>
+				<a href="loginform">예약확인</a>
+			</c:otherwise>
+		</c:choose>
+	</div>
+</div>
+<div id = "promotion">
+		<ul>
+		</ul>
+</div>
+<nav id = "tab_menu">
+	<ul>
+		<li class = "on">전체</li>
+		<li value = "1">전시</li>
+		<li value = "2">콘서트</li>
+		<li value = "3">클래식</li>
+		<li value = "4">연극</li>
+	</ul>
+</nav>
+<div class="cnt_row">바로 예매 가능한 행사가 <span id="cnt">${productResponse.totalCount}개</span> 있습니다.</div>
+<div id = "product_container">
+	<section id = "left_container">
+		<ul>
+			<c:forEach items="${productResponse.items}" var="p" begin="0" step="2">
+				<li class="main_content">
+					<a href = "detail?displayInfoId=${p.displayInfoId}"> 
+						<div class = "main_img"> 
+							<img src = "${p.productImageUrl}"> 
+						</div> 
+						<div class = "description"> 
+							<h4>${p.productDescription}</h4> 
+						</div> 
+						<div class = "content">  
+							<h5>${p.productContent}</h5> 
+						</div> 
+					</a>
+				</li>
+			</c:forEach>
+		</ul>
+	</section>
+	<section id = "right_container">
+		<ul>
+			<c:forEach items="${productResponse.items}" var="p" begin="1" step="2">
+				<li class="main_content">
+					<a href = "detail?displayInfoId=${p.displayInfoId}"> 
+						<div class = "main_img"> 
+							<img src = "${p.productImageUrl}"> 
+						</div> 
+						<div class = "description"> 
+							<h4>${p.productDescription}</h4> 
+						</div>
+						<div class = "content">  
+							<h5>${p.productContent}</h5> 
+						</div> 
+					</a>
+				</li>
+			</c:forEach>
+		</ul>
+	</section>
+</div>
+<div id="more_btn">
+	<button type = "button">더보기</button>
+</div>
+<a id = "go_top" href = "#">&uarr;Top</a>
+
+</body>
+</html>-->

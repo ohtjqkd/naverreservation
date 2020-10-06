@@ -3,7 +3,6 @@ package kr.or.connect.naverreservation.dto;
 import java.util.Date;
 
 public class DisplayInfo {
-	private Integer categoryId;
 	private String name;
 	private String createDate;
 	private Integer id;
@@ -19,6 +18,7 @@ public class DisplayInfo {
 	private String event;
 	private Integer productId;
 	private String tel;
+	private Integer categoryId;
 	public Integer getCategoryId() {
 		return categoryId;
 	}

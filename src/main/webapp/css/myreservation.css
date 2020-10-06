@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+.my_summary{
+	background-color:#1DC800;
+}
+.summary_board{
+	display:flex;
+	justify-content:space-around;
+	color:white;	
+}
+.summary_board .item{
+}
+.summary_board .tit{
+	font-size:0.7em;
+}
+.link_summary_board{}
+.on{}
+.spr_book2>img{
+	width:1.0em;
+	height:1.0em;
+	vertical-align:middle;
+}
+.ico_book2{
+}
+.ico_book_ss{
+}
+.ico_check{
+}
+.ico_back{
+}
+.tit{
+	
+}
+.figure{
+	font-size:1.5em;
+	text-align:center;
+}
+.wrap_mylist{
+	background-color:#E9ECEF;
+	padding-top:1.0em;
+	padding-bottom:1.0em;
+}
+.list_cards{
+	width:95%;
+	margin:0 auto;
+}
+.confirmed{}
+.used{}
+.card{
+	margin-bottom:1.0em;
+}
+.link_booking_details{}
+.card_header{
+	display:flex;
+	color:white;
+	width:100%;
+}
+.card_header .tit{
+	line-height:2.0em;
+}
+.card_header .left{
+	width:2%;
+	height:3.0em;
+	background-image:url(../img/bg_card3_hl.png);
+	background-size:100% 100%;
+}
+.card_header .middle{
+	width:96%;
+	height:3.0em;
+	background-image:url(../img/bg_card3_hm.gif);
+	background-size:contain;
+}
+.card_header .right{
+	width:2%;
+	height:3.0em;
+	background-image:url(../img/bg_card3_hr.png);
+	background-size:100% 100%;
+}
+.confirmed .card_header .left{
+	background-image:url(../img/bg_card2_hl.png);
+}
+.confirmed .card_header .middle{
+	background-image:url(../img/bg_card2_hm.gif);
+}
+.confirmed .card_header .right{
+	background-image:url(../img/bg_card2_hr.png);
+}
+.left{
+}
+.middle{
+}
+.right{
+}
+.ico_clock{}
+.ico_check2{}
+.ico_cancel{}
+.right{}
+.card_item{
+	background-color:white;
+	padding-bottom:3px;
+	border-bottom:1px solid #DBDDE0;
+}
+.card_body{
+	width:90%;
+	margin:0 auto;
+}
+.card_detail{
+	padding-top:1.5em;
+}
+.card_detail .tit{
+	font-size:1.4em;
+}
+.booking_number{}
+.detail{
+	border-top:1px solid #DBDDE0;
+	margin-top:0.5em;
+	border-bottom:1px solid #DBDDE0;
+	padding:0.5em 0 0.5em 0;
+}
+.detail .item{
+	padding:0.2em;
+}
+.item_tit{
+	color:#BCBCBC;
+	margin-right:5px;
+}
+.item_dsc{}
+.price_summary{
+	padding-top:0.5em;
+	padding-bottom:1.5em;
+}
+.price_tit{}
+.price_amount{
+	color:red;
+}
+.unit{}
+.booking_cancel{
+	text-align:center;
+	margin-bottom:1.5em;
+}
+.btn{
+	width:100%;
+	background-color:#F4F4F4;
+	border:1px solid #C8C8C8;
+}
+.card_footer{}
+.btn_goto_share{}
+.err{
+	display:none;
+}
+.ico_info_nolist{}
+.popup_booking_wrapper{
+	text-align:center;
+}
+.dimm_dark{}
+.popup_booking{}
+.refund{}
+.pop_tit{}
+.nomember_alert{
+	margin-top:1.0em; 
+	margin-bottom:1.0em 
+}
+.pop_bottom_btnarea{
+	display:flex;
+}
+.pop_bottom_btnarea>*{
+	text-align:center;
+	width:50%;
+}
+.pop_bottom_btnarea button{
+	width:80%;
+}
+.btn_gray{}
+.btn_green{}
+.btn_bottom{}
+.popup_btn_close{}
+.ico_cls{}

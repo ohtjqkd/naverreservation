@@ -10,7 +10,13 @@ public class ProductImage {
 	private String saveFileName;
 	private Integer productId;
 	private Integer productImageId;
-	private enum type {ma, th, et};
+	private String type;
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	@Override
 	public String toString() {
 		return "ProductImage [contentType=" + contentType + ", createDate=" + createDate + ", deleteFlag=" + deleteFlag

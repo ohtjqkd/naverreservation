@@ -1,0 +1,230 @@
+@charset "UTF-8";
+button{
+	margin:0;
+	padding:0;
+	background-color:white;
+	vertical-align:bottom;
+}
+input{
+}
+strong{
+	display:block;
+}
+.ct{
+	
+}
+.ct_wrap{
+	
+}
+.visual_img{
+}
+.visual_img .item{
+	position:relative;
+	max-height:fit-content;
+}
+.preview_txt{
+	width:100%;
+	position:absolute;
+	left:50%;
+	bottom:5%;
+	transform:translateX(-50%);
+	text-align:center;
+	color:white;
+}
+.preview_txt_tit{
+	display:block;
+}
+.preview_txt_dsc{
+	display:block;	
+}
+.section_store_details{
+	
+}
+.store_details{
+	
+}
+.in_tit{
+	
+}
+.dsc{
+	
+}
+.section_booking_ticek{}
+.ticket_body{
+	padding:1.0em;
+}
+.qty{
+	margin-bottom:1.0em;
+	display:flex;
+	justify-content:space-between;
+	border-bottom:1px solid #F0F0F0;
+}
+.qty_info_icon>*{
+	margin:0.5em 0;
+}
+.product_amount{}
+.product_price{}
+.price{}
+.price_type{}
+.product_dsc{
+	display:block;
+}
+.count_control{
+	text-align:right;
+	
+}
+.clearfix{
+	margin:0.5em 0;
+	height:55%;
+	width:fit-content;
+}
+.btn_plus_minus{
+	margin:0;
+	width:2.3em;
+	height:2.3em;
+}
+.ico_minus3{
+	color:#00CE34;
+	border-top:1px solid #00CE34;
+	border-right:0px;
+	border-left:1px solid #00CE34;
+	border-bottom:1px solid #00CE34;
+	background-size:cover;
+}
+.ico_minus3.disabled{
+}
+.ico_plus3{
+	color:white;
+	border-top:1px solid #00CE34;
+	border-right:1px solid #00CE34;
+	border-left:0px;
+	border-bottom:1px solid #00CE34;
+	background-color:#00CD33;
+	background-size:cover;	
+}
+.ico_plus3.disabled{
+}
+.count_control_input{
+	margin:0;
+	width:2.0em;
+	height:2.0em;
+	border:1px solid #00CE34;
+	color:#00CE34;
+	text-align:center;
+}
+.individual_price{
+	margin-top:0.5em;
+}
+.disabled{
+	color:#CCCCCC;
+	border-color:#CCCCCC;
+	background-color:unset;
+}
+.total_price{}
+.section_booking_form{}
+.booking_form_wrap{
+	width:100%;
+}
+.form_wrap{
+	padding:1.0em;
+}
+.form_wrap img{
+	width:1.5em;
+}
+.out_tit{
+	display:inline-block;
+}
+.agreement_nessasary{
+	float:right;
+}
+.help_txt{}
+.ico_nessasary{
+	vertical-align:baseline;
+}
+.form_horizontal{
+	margin:1.5em 0;
+	padding:1.0em 0;
+	border-top:1px solid #EDF0F2;
+	border-bottom:1px solid #EDF0F2;
+}
+.spr_book{}
+.inline_form{
+	width:100%;
+	padding:0.5em 0;
+}
+.inline_form .label{
+	float:left;
+	width:30%;
+}
+.inline_control{
+	width:60%;
+	display:inline-block;
+}
+.inline_control>input{
+	width:100%;
+}
+.text{}
+.tel_wrap{}
+.tel{}
+.email{}
+.inline_txt{}
+.section_booking_agreement{
+	padding:1.0em;
+}
+.agreement{
+	padding:1.0em 0;
+	clear:both;
+	border-top:1px solid #EDF0F2; 
+	
+}
+.agreement input[type="checkbox"]{
+	backgounrd-color:unset;
+	background-image:url(../img/agreement_chceck_false.png);
+}
+.all{}
+.chk_agree{}
+.chk_txt_label{}
+.chk_txt_span{}
+.ico_arr_ipc2{}
+.btn_agreement{}
+.fn-down2{}
+.useragreement_details{
+	display:none;
+	margin-top:1.0em;
+	height:8.0em;
+	overflow:auto;
+	border:1px solid #EDF0F2;
+}
+.btn_agreement{
+	display:inline-block;
+	float:right;
+}
+.btn_text{
+	cursor:pointer;
+}
+.open{
+	display:block;
+}
+.custom_details_warp{}
+.custom_details{}
+.box_bk_btn{}
+.bk_btn_wrap{}
+.bk_btn{
+}
+.disable{
+	background-color:#D1D1D1;
+}
+.ico_naver_s{}
+
+#id{
+}
+#name{}#tel{}#email{}#totalCount{}
+
+#chk3 input[type="checkbox"]{
+	background-image:url("../img/agreement_checked_false.png");
+	float:left;
+}
+
+
+
+

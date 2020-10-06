@@ -12,10 +12,13 @@
   	<param-value>kr.or.connect.naverreservation.config.ApplicationConfig
   	</param-value>
   </context-param>
+  <!-- 
+  third party servlet이 필요없을 경우
   <listener>
   	<listener-class>org.springframework.web.context.ContextLoaderListener
   	</listener-class>
-  </listener>
+  </listener> 
+  -->
   <servlet>
   	<servlet-name>oh</servlet-name>
   	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

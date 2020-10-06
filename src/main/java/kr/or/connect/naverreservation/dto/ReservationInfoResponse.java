@@ -3,13 +3,13 @@ package kr.or.connect.naverreservation.dto;
 import java.util.List;
 
 public class ReservationInfoResponse {
-	private List<ReservationInfo> reseravtions;
+	private List<ReservationInfo> reservations;
 	private Integer size;
-	public List<ReservationInfo> getReseravtions() {
-		return reseravtions;
+	public List<ReservationInfo> getReservations() {
+		return reservations;
 	}
-	public void setReseravtions(List<ReservationInfo> reseravtions) {
-		this.reseravtions = reseravtions;
+	public void setReservations(List<ReservationInfo> reservations) {
+		this.reservations = reservations;
 	}
 	public Integer getSize() {
 		return size;
@@ -19,7 +19,7 @@ public class ReservationInfoResponse {
 	}
 	@Override
 	public String toString() {
-		return "ReservationInfoResponse [reseravtions=" + reseravtions + ", size=" + size + "]";
+		return "ReservationInfoResponse [reseravtions=" + reservations + ", size=" + size + "]";
 	}
 	
 }

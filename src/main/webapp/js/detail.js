@@ -2,119 +2,228 @@
 function getDisplayInfoResponse(displayInfoId){
 	$.ajax({
 		type:"GET",
-		async:false,
 		url:"product/"+displayInfoId,
 		dataType:"json",
 		success:function(response){
-			
-			console.log("ajax start");
-			console.log(response.displayInfoResponse);
-			response.displayInfoResponse.productImages.splice(0,2);
 			for(key in response.displayInfoResponse){
 				localStorage[key] = JSON.stringify(response.displayInfoResponse[key]);
-				console.log(JSON.stringify(response.displayInfoResponse[key]))
 			}
 		}
+	}).done(function(response){
+		console.log("ajax completed");
+		console.log("response",response);
+		console.log("displayInfoResponse", response.displayInfoResponse);
+		if(document.URL.includes("detail")){
+			setDetail(response);
+		} else if(document.URL.includes("review")){
+			setReview(response);
+		} else if(document.URL.includes("reserve")){
+			setReserve(response);
+		}
 	});
+};
+
+function setDetail(response){
+		var target = ".visual_img";
+		var displayInfoResponse = response.displayInfoResponse;
+		var productImages = displayInfoResponse.productImages;
+		//slide section
+		if(productImages.length-1 < 2){
+			document.querySelector(".prev").classList.add("hide");
+			document.querySelector(".nxt").classList.add("hide");
+			document.querySelectorAll(".spr_book2").forEach(function(e){
+				e.classList.add("hide");
+			});
+		}
+		insertImage(".visual_img", response.displayInfoResponse.productImages);
+		
+		//comment section
+		graphSet(response);
+		commentTemplating(displayInfoResponse.comments);
+		translateDecimalFormat();
 }
 
-function sliding(direction, productImages) {
-	let idx = Number(document.querySelector("#nth").innerText);
-	console.log("current Index = " + idx);
-	let totalLen = Number(document.querySelector("#img_cnt").innerText);
+function setReview(response){
+	graphSet(response);
+	commentTemplating(response.displayInfoResponse.comments);
+	translateDecimalFormat();
+}
+
+function graphSet(response){
+	var graphWidth = response.displayInfoResponse.averageScore/5*100;
+	document.querySelector(".graph_value").style.cssText = `width: ${graphWidth}%;`;
+}
+
+function insertImage(target, productImages){
+	let imgLen = productImages.length-1;
+	let idx = 0;
+	productImages.forEach(function(e){
+		if((e.type=="et"||e.type=="th")){
+			$(target).append(
+					`<li class="item"> 
+						<img alt="${e.type}" class="img_thumb" src="${e.saveFileName}"> <span class="img_bg"></span>
+					</li>`
+			);
+		}
+	})
+	var totalWidth = imgLen * 100;
+	var itemWidth = 100 / imgLen;
+	document.querySelector(target).style.cssText = `width:${totalWidth}%;`;
+	document.querySelectorAll(".container_visual .item").forEach(function(e){
+		e.style.cssText = `width:${itemWidth}%;`;
+	})
+}
+function commentTemplating(comments){
+	var resultTemplate = ""
+	var commentTemplate = `
+							<li class="list_item">
+								<div>
+									<h4 class="resoc_name">{{description}}</h4>
+									<div class="review_area">
+										<p class="review">{{comment}}</p>
+										<div class="thumb_area">
+											{{~#if hasImages}}
+												<a href="{{commentImages.[0].saveFileName}}" class="thumb" title="이미지 크게 보기"> <img width="90" height="90" class="img_vertical_top" src="{{commentImages.[0].saveFileName}}" alt="리뷰이미지"> </a> <span class="img_count" style="display:none;">1</span>                                                
+											{{~/if~}}
+										</div>
+									</div>
+									<div class="info_area">
+										<div class="review_info"> <span class="grade">{{score}}</span> <span class="name">{{reservationEmail}}</span> <span class="date">{{reservationDate}} 방문</span> </div>
+									</div>
+								</div>
+							</li>
+                            `
+	var bindTemplate = Handlebars.compile(commentTemplate);
+	console.log(comments.length);
+	if(comments.length==0){
+		resultTemplate = `		<div class="review_box">
+									<h3 class="title_h3">아직 등록된 한줄평이 없어요.</h3>
+								</div>`
+
+	}else{
+		if(!document.URL.includes("review")){
+			comments = comments.slice(0,4);
+		}
+		resultTemplate = comments.reduce(function(p,c){
+			c["hasImages"] = (c.commentImages.length != 0);
+			return p += bindTemplate(c);
+		},"\n");
+	}
+	document.querySelector(".list_short_review").innerHTML = resultTemplate;
+}
+
+function sliding(direction) {
+	let idx = Number(document.querySelector(".num").innerText);
+	let totalLen = Number(document.querySelector(".off>span").innerText);
 	if(direction == "left"){
 		if(idx<=1)return;
 		idx -= 1;
-		document.querySelector("#nth").innerText = idx;
+		document.querySelector(".num").innerText = idx;
 		console.log("go left!");
 	} else if(direction == "right"){
 		if(idx>=totalLen)return;
 		idx += 1;
 		console.log("go right!");
-		document.querySelector("#nth").innerText = idx;
-		let target = $(".slide_dummy>ul");
-		console.log("ul length = " + target.children().length);
-		if(target.children().length == idx) insertImage(target, productImages);
+		document.querySelector(".num").innerText = idx;
 	}
-	$(".slide_dummy").css("margin-left",((1-idx) * 100) + "%");
-	
+	$(".visual_img").css("margin-left",((1-idx) * 100) + "%");
 }
 
-function insertImage(target, productImages){
-	if(productImages.length>0){
-		target.css("width",(target.children().length+1)*100 + "%");
-		target.append(`<li class='product_image'><img src='${productImages[0].saveFileName}'></li>`);
-		productImages.splice(0,1);
-		localStorage['productImages'] = JSON.stringify(productImages);
+function hideTabUi(e){
+	divs = document.querySelectorAll(".section_info_tab>div");
+	divs.forEach(function(v){
+		v.classList.remove("hide");
+	});
+	targetClassName = e.target.parentElement.parentElement.classList[1];
+	console.log(targetClassName);
+	if(targetClassName != "_detail"){
+		document.querySelector(".detail_area_wrap").classList.add("hide");
+	} else if(targetClassName != "_path"){
+		document.querySelector(".detail_location").classList.add("hide");
 	}
 }
 
-function getContact(){
-	displayInfo = JSON.parse(localStorage['displayInfo']);
-	displayInfoImage = JSON.parse(localStorage['displayInfoImage']);
-	var contactTemplate = 
-		`<img class='map' src = '${displayInfoImage.saveFileName}'>
-			<h4>${displayInfo.placeStreet}</h4>
-			<p>${displayInfo.placeLot}</p>
-			<p>${displayInfo.placeName}</p>
-			<p>${displayInfo.tel}</p>`
-		
-	var bindTemplate = Handlebars.compile(contactTemplate);
-	var resultTemplate = bindTemplate(displayInfo);
-	return resultTemplate;
+function translateDecimalFormat(){
+	document.querySelectorAll(".grade").forEach(function(e){
+		let decimalForm = Number(e.innerText).toFixed("1");
+		e.innerText = decimalForm;
+	});
 }
 
-$("#more_description").click(function(e){
-	console.log(e.target.innerHtml);
-	if($(".content").hasClass("hide")){
-		console.log("Has hide class");
-		$(".content").toggleClass("hide");
-		e.target.innerText = '접기';
-	} else {
-		$(".content").toggleClass("hide");
-		console.log("I cant find this");
-		e.target.innerText = '펼쳐보기';
-	}
-})
-
-
+function goReserve(displayInfoId){
+	console.log("reserve?displayInfoId="+displayInfoId);
+	location.href= "reserve?displayInfoId="+displayInfoId;
+}
 
 $(document).ready(function(){
-	console.log("page loaded");
 	var url = document.URL;
 	var paramString = url.match(/(?<=\?).+/gms);
 	var params = new URLSearchParams(paramString[0]);
 	var displayInfoId = params.get('displayInfoId');
-	console.log("displayInfoId = " + displayInfoId);
 	getDisplayInfoResponse(displayInfoId);
-	if(JSON.parse(localStorage.productImages).length>0) {
-		insertImage($(".slide_dummy>ul"), JSON.parse(localStorage['productImages']));
-		console.log(localStorage['productImages']);
-	}
 })
 
-$(".left").click(function(){
+$(".prev").click(function(){
 	sliding("left", JSON.parse(localStorage.productImages));
 })
-$(".right").click(function(){
+$(".nxt").click(function(){
 	console.log(localStorage.productImages);
 	sliding("right", JSON.parse(localStorage.productImages));
 })
-$("#tab_menu>ul").click(function(e){
-	console.log("clicked");
-	if(e.target.id == "contact") {
-//		localStorage['inform'] = document.querySelector("#information>section").innerHTML;
-		console.log(localStorage['inform'])
-		e.target.classList.toggle("on",true);
-		$("#detail").removeClass();
-		$("#information>section").html(getContact());
-		return;
-	}
-	if(e.target.id == "detail") {
-		e.target.classList.toggle("on",true);
-		$("#contact").removeClass();
-		$("#information>section").html(localStorage['inform']);
+
+$(".bk_more").click(function(e){
+	$(".store_details").toggleClass("close3")
+	$(".bk_more").toggleClass("_on")
+})
+$(".info_tab_lst").click(function(e){
+	if(e.target.tagName == "SPAN"){
+		document.querySelector(".info_tab_lst .active").classList.remove("active");
+		e.target.parentElement.classList.add("active");
+		hideTabUi(e);
 	}
 })
 
-console.log(localStorage)
+//$("more_comment").click(function(e){
+//	localStorage['detailPage'] = document.querySelector("body").innerHTML;
+//	displayInfo = JSON.parse(localStorage['displayInfo']);
+//	displayInfoImage = JSON.parse(localStorage['displayInfoImage']);
+//	var contactTemplate = 
+//		`<img class='map' src = '${displayInfoImage.saveFileName}'>
+//			<div id = "comment_container">
+//				<h4>예약자 한줄평</h4>
+//				<c:forEach var="i" begin="1" end="5">
+//					<c:if test="${displayInfoResponse.averageScore>i}">
+//						<img src="img/red_star.png">
+//					</c:if>
+//					<c:if test="${displayInfoResponse.averageScore<=i}">
+//						<img src="img/gray_star.png">
+//					</c:if>
+//				</c:forEach>
+//				${displayInfoResponse.averageScore}/ 5.0 
+//				${displayInfoResponse.comments}건 등록
+//				<div id = "comments">
+//				<ul>
+//					<c:forEach items="${displayInfoResponse.comments}" var="comment" end="2">
+//						<li class = "each_comment">
+//							<h5>${comment.description}</h5>
+//							<p>${comment.comment}</p>
+//							<c:if test="${comment.commentImages} > 0">
+//								<c:forEach items="${comment.commentImages}" var="image">>
+//									<img src ="${img.fileName}">
+//								</c:forEach>
+//							</c:if>			
+//							${comment.score}
+//							${comment.reservationEmail}
+//							${comment.reservationDate}
+//						</li>
+//					</c:forEach>
+//				</ul>
+//				</div>	
+//			</div>
+//		`
+//		
+//		
+//	var bindTemplate = Handlebars.compile(contactTemplate);
+//	var resultTemplate = bindTemplate(displayInfo);
+//	return resultTemplate;
+//})

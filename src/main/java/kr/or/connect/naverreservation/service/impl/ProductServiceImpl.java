@@ -1,4 +1,4 @@
-package kr.or.connect.naverreservation.service;
+package kr.or.connect.naverreservation.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,8 +12,10 @@ import kr.or.connect.naverreservation.dto.Comment;
 import kr.or.connect.naverreservation.dto.DisplayInfo;
 import kr.or.connect.naverreservation.dto.DisplayInfoResponse;
 import kr.or.connect.naverreservation.dto.Product;
+import kr.or.connect.naverreservation.dto.ProductPrice;
 import kr.or.connect.naverreservation.dto.ProductResponse;
 import kr.or.connect.naverreservation.dto.PromotionResponse;
+import kr.or.connect.naverreservation.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -58,8 +60,6 @@ public class ProductServiceImpl implements ProductService {
 		return productResponse;
 	}
 	
-	
-	
 
 	@Override
 	public Product getProducts(Integer categoryId) {
@@ -77,6 +77,7 @@ public class ProductServiceImpl implements ProductService {
 		
 		
 	}
+
 
 
 }

@@ -6,7 +6,7 @@ import java.util.List;
 public class ReservationInfo {
 	private boolean cancelYn;
 	private String createDate;
-	private	List<DisplayInfo> displayInfo;
+	private	DisplayInfo displayInfo;
 	private Integer displayInfoId;
 	private String modifyDate;
 	private Integer productId;
@@ -14,8 +14,15 @@ public class ReservationInfo {
 	private String reservationEmail;
 	private Integer reservationInfoId;
 	private String reservationName;
-	private String reservationTelephone;
+	private String reservationTel;
 	private Integer totalPrice;
+	private boolean usedYn;
+	public boolean getUsedYn() {
+		return usedYn;
+	}
+	public void setUsedYn(boolean usedYn) {
+		this.usedYn = usedYn;
+	}
 	public boolean isCancelYn() {
 		return cancelYn;
 	}
@@ -28,10 +35,10 @@ public class ReservationInfo {
 	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
-	public List<DisplayInfo> getDisplayInfo() {
+	public DisplayInfo getDisplayInfo() {
 		return displayInfo;
 	}
-	public void setDisplayInfo(List<DisplayInfo> displayInfo) {
+	public void setDisplayInfo(DisplayInfo displayInfo) {
 		this.displayInfo = displayInfo;
 	}
 	public Integer getDisplayInfoId() {
@@ -76,11 +83,11 @@ public class ReservationInfo {
 	public void setReservationName(String reservationName) {
 		this.reservationName = reservationName;
 	}
-	public String getReservationTelephone() {
-		return reservationTelephone;
+	public String getReservationTel() {
+		return reservationTel;
 	}
-	public void setReservationTelephone(String reservationTelephone) {
-		this.reservationTelephone = reservationTelephone;
+	public void setReservationTel(String reservationTel) {
+		this.reservationTel = reservationTel;
 	}
 	public Integer getTotalPrice() {
 		return totalPrice;
@@ -94,6 +101,6 @@ public class ReservationInfo {
 				+ ", displayInfoId=" + displayInfoId + ", modifyDate=" + modifyDate + ", productId=" + productId
 				+ ", reservationDate=" + reservationDate + ", reservationEmail=" + reservationEmail
 				+ ", reservationInfoId=" + reservationInfoId + ", reservationName=" + reservationName
-				+ ", reservationTelephone=" + reservationTelephone + ", totalPrice=" + totalPrice + "]";
+				+ ", reservationTelephone=" + reservationTel + ", totalPrice=" + totalPrice + "]";
 	}
 }

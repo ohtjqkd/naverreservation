@@ -77,7 +77,17 @@ public class Comment {
 		return reservationEmail;
 	}
 	public void setReservationEmail(String reservationEmail) {
-		this.reservationEmail = reservationEmail;
+		StringBuffer sb = new StringBuffer();
+//		int idx = reservationEmail.indexOf("@");
+		int idx = reservationEmail.length();
+		for(int i = 0; i < idx; i++) {
+			if(i<4) {
+				sb.append(reservationEmail.charAt(i));
+				continue;
+			}
+			sb.append('*');
+		}
+		this.reservationEmail = sb.toString();
 	}
 	public Integer getReservationInfoId() {
 		return reservationInfoId;
@@ -101,7 +111,7 @@ public class Comment {
 		return score;
 	}
 	public void setScore(double score) {
-		this.score = score;
+		this.score = Double.parseDouble(String.format("%.1f",score));;
 	}
 
 }

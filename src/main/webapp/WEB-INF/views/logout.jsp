@@ -4,13 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>logout</title>
 </head>
 <body>
-<form action = "login" method="post">
-	<h4>비회원 예약확인</h3>
-	<input name="memberEmail" id="memberEmail" type="text" placeholder="예약자 이메일 입력">
-	<button type="submit">내 예약 확인</button>
-</form>
+	log out 중...
 </body>
 </html>

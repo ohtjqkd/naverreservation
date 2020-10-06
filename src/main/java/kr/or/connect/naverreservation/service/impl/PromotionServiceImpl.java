@@ -1,4 +1,4 @@
-package kr.or.connect.naverreservation.service;
+package kr.or.connect.naverreservation.service.impl;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import kr.or.connect.naverreservation.dao.ProductDao;
 import kr.or.connect.naverreservation.dao.PromotionDao;
 import kr.or.connect.naverreservation.dto.Promotion;
 import kr.or.connect.naverreservation.dto.PromotionResponse;
+import kr.or.connect.naverreservation.service.PromotionService;
 
 @Service
 public class PromotionServiceImpl implements PromotionService {
